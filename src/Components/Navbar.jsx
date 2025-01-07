@@ -33,16 +33,19 @@ const Navbar = () => {
               <Link to={"/"} className="lg:text-xl text-lg">
                 Home
               </Link>
-              <Link to={"/allequipment"} className="lg:text-xl text-lg">
-                All Equipment
+              <Link to={"/find-tuitorial"} className="lg:text-xl text-lg">
+                Find Tuitor
               </Link>
               {user && (
                 <>
-                  <Link to={"/myequipment"} className="lg:text-xl text-lg">
-                    My Equipment
+                  <Link to={"/add-tuitorial"} className="lg:text-xl text-lg">
+                    Add Tuitorial
                   </Link>
-                  <Link to={"/addequipment"} className="lg:text-xl text-lg">
-                    Add Equipment
+                  <Link to={"/my-tuitorial"} className="lg:text-xl text-lg">
+                    My Tuitorial
+                  </Link>
+                  <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
+                    My Booked Tuitor
                   </Link>
                 </>
               )}
@@ -61,16 +64,19 @@ const Navbar = () => {
             <Link to={"/"} className="lg:text-xl text-lg">
               Home
             </Link>
-            <Link to={"/allequipment"} className="lg:text-xl text-lg">
-              All Equipment
+            <Link to={"/find-tuitorial"} className="lg:text-xl text-lg">
+              Find Tuitor
             </Link>
             {user && (
               <>
-                <Link to={"/myequipment"} className="lg:text-xl text-lg">
-                  My Equipment
+                <Link to={"/add-tuitorial"} className="lg:text-xl text-lg">
+                  Add Tuitorial
                 </Link>
-                <Link to={"/addequipment"} className="lg:text-xl text-lg">
-                  Add Equipment
+                <Link to={"/my-tuitorial"} className="lg:text-xl text-lg">
+                  My Tuitorial
+                </Link>
+                <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
+                  My Booked Tuitor
                 </Link>
               </>
             )}

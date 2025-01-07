@@ -25,6 +25,7 @@ const LoginPage = () => {
       .then((result) => {
         console.log(result);
         toast.success("Your Logged In");
+        navigate("/");
         return;
       })
       .catch((error) => {
