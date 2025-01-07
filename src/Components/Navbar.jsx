@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ContextMain } from "../Context/ContextApi";
 
 const Navbar = () => {
-  const { user } = useContext(ContextMain);
+  const { user, EmailsignOut } = useContext(ContextMain);
   return (
     <>
       <div className="navbar  text-black font-bold h-[6rem]">
@@ -80,29 +80,32 @@ const Navbar = () => {
           <div>
             {user ? (
               <>
-                <div className="dropdown dropdown-hover">
+                <div className="dropdown dropdown-hover mr-[2rem]">
                   <div tabIndex={0} role="button" className=" m-1">
                     <div className="flex gap-2 justify-around items-center">
                       <img
                         src={user?.photo}
                         alt=""
-                        className="w-[4rem] h-[4rem] rounded-full"
+                        className="w-[4rem] h-[4rem] rounded-full border-2 border-slate-400"
                       />
                     </div>
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content menu rounded-box bg-base-100 z-[1] w-40 mr-24 p-2 shadow"
+                    className="dropdown-content menu rounded-box bg-base-100 z-[1] lg:w-28 mr-[8rem] p-2 shadow"
                   >
                     <div>
                       <div>
-                        <p className="text-lg font-bold text-pink-400">
+                        <p className="lg:text-lg md:text-base font-bold text-center p-2">
                           {user?.name}
                         </p>
                       </div>
                       <div>
-                        <button onClick={EmailsignOut}>
-                          <Link to="/" className="text-red-500">
+                        <button onClick={EmailsignOut} className="w-full my-5">
+                          <Link
+                            to="/"
+                            className="lg:text-lg md:text-base font-bold text-white text-center p-2 bg-purple-500  hover:bg-gray-200/50 rounded-lg "
+                          >
                             SignOut
                           </Link>
                         </button>

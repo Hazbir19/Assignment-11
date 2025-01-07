@@ -6,11 +6,11 @@ import Footer from "../Components/Footer";
 const PagesLayouts = () => {
   return (
     <>
-      <div className="bg-gradient-to-tl from-purple-400/40 to-white">
+      <div className="bg-gradient-to-tl from-purple-400/40 to-white ">
         <div>
           <Navbar></Navbar>
         </div>
-        <div>
+        <div className="min-h-[calc(100vh-15rem)]">
           <Outlet></Outlet>
         </div>
         <div>
