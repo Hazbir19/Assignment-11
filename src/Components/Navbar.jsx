@@ -123,14 +123,6 @@ const Navbar = () => {
             ) : (
               <>
                 <div className="flex gap-5 justify-between items-center">
-                  <div className="">
-                    <Link
-                      to="/login"
-                      className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
-                    >
-                      Login
-                    </Link>
-                  </div>
                   <div>
                     <Link
                       to="/register"

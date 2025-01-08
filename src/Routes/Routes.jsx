@@ -9,6 +9,7 @@ import MyTuitorial from "../pages/MyTuitorial";
 import TuitorDetails from "../pages/TuitorDetails";
 import FindTuitor from "../pages/FindTuitor";
 import MyBooked from "../pages/MYBooked";
+import Update from "../pages/Update";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +62,16 @@ const router = createBrowserRouter([
             <MyBooked></MyBooked>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRouter>
+            <Update></Update>
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/mytuitorials/${params.id}`),
       },
     ],
   },
