@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextMain } from "../Context/ContextApi";
+import Mode from "../Hooks/Mode";
 
 const Navbar = () => {
   const { user, EmailsignOut } = useContext(ContextMain);
@@ -33,7 +34,7 @@ const Navbar = () => {
               <Link to={"/"} className="lg:text-xl text-lg">
                 Home
               </Link>
-              <Link to={"/find-tuitorial"} className="lg:text-xl text-lg">
+              <Link to={"/find-tuitor"} className="lg:text-xl text-lg">
                 Find Tuitor
               </Link>
               {user && (
@@ -64,9 +65,10 @@ const Navbar = () => {
             <Link to={"/"} className="lg:text-xl text-lg">
               Home
             </Link>
-            <Link to={"/find-tuitorial"} className="lg:text-xl text-lg">
+            <Link to={"/find-tuitor"} className="lg:text-xl text-lg">
               Find Tuitor
             </Link>
+
             {user && (
               <>
                 <Link to={"/add-tuitorial"} className="lg:text-xl text-lg">
@@ -83,6 +85,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end lg:mr-[8rem]">
+          <Mode></Mode>
           <div>
             {user ? (
               <>

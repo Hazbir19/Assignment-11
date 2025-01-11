@@ -8,10 +8,12 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
+import axios from "axios";
 export const ContextMain = createContext();
 const ContextApi = ({ children }) => {
   //User State
   const [user, SetUser] = useState(null);
+  const [loadding, setloadding] = useState(true);
   // PassWord Validate
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -22,14 +24,14 @@ const ContextApi = ({ children }) => {
   };
   //login with Google start
   const HandleGoogleSignIn = () => {
-    // setloadding(true);
+    setloadding(true);
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleProvider);
   };
   //login with Google Ends
   // Signin or Register by Email and password
   const handleEmailSignIn = (email, password) => {
-    // setloadding(true);
+    setloadding(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //Login User
@@ -51,9 +53,35 @@ const ContextApi = ({ children }) => {
           photo: currentUser.photoURL,
           email: currentUser.email,
         });
+        console.log("Current state", currentUser?.email);
+
+        if (currentUser?.email) {
+          const user = { email: currentUser.email };
+          axios
+            .post("https://sever-silde.vercel.app/jwt", user, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              console.log("login Token", res.data);
+            });
+        } else {
+        }
+        setloadding(false);
       } else {
+        axios
+          .post(
+            "https://sever-silde.vercel.app/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log("Logout delete your token", res.data);
+          });
         console.log("no user");
         SetUser(null);
+        setloadding(false);
       }
     });
     return () => {
@@ -68,6 +96,7 @@ const ContextApi = ({ children }) => {
     HandleLogIn,
     validatePassword,
     HandleGoogleSignIn,
+    loadding,
   };
   return <ContextMain.Provider value={items}>{children}</ContextMain.Provider>;
 };

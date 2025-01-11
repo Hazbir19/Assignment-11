@@ -23,7 +23,7 @@ const AddTuitorial = () => {
       description,
       review,
     };
-    fetch("http://localhost:5000/tuitorial", {
+    fetch("https://sever-silde.vercel.app/tuitorial", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

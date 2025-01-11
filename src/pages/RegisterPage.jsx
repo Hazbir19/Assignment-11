@@ -27,7 +27,7 @@ const RegisterPage = () => {
           photoURL: photo,
         }).then(() => {
           //User create Operation: method post hit in this localpath
-          fetch("http://localhost:5000/users", {
+          fetch("https://sever-silde.vercel.app/users", {
             method: "POST", //user create method
             headers: {
               "Content-Type": "application/json",

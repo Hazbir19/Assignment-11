@@ -1,35 +1,48 @@
 import { createBrowserRouter } from "react-router-dom";
 import PagesLayouts from "../layouts/PagesLayouts";
 import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+
 import RegisterPage from "../pages/RegisterPage";
 import AddTuitorial from "../pages/AddTuitorial";
 import PrivateRouter from "../Private/PrivateRouter";
 import MyTuitorial from "../pages/MyTuitorial";
 import TuitorDetails from "../pages/TuitorDetails";
 import FindTuitor from "../pages/FindTuitor";
-import MyBooked from "../pages/MYBooked";
+import MyBooked from "../pages/MyBooked";
 import Update from "../pages/Update";
+import AllTuitor from "../pages/AllTuitor";
+import ErrorPage from "../Components/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <PagesLayouts></PagesLayouts>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <HomePage></HomePage>,
       },
-      {
-        path: "/login",
-        element: <LoginPage></LoginPage>,
-      },
+
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>,
       },
       {
-        path: "/find-tuitorial",
+        path: "/find-tuitor",
+        element: <AllTuitor></AllTuitor>,
+        loader: () => fetch("https://sever-silde.vercel.app/tuitorial"),
+      },
+      {
+        path: "/find-tutors/:language",
         element: <FindTuitor></FindTuitor>,
+      },
+      {
+        path: "/details/:id",
+        element: <TuitorDetails></TuitorDetails>,
+        loader: ({ params }) =>
+          fetch(`https://sever-silde.vercel.app/tuitorial/${params.id}`, {
+            withCredentials: true,
+          }),
       },
       {
         path: "/add-tuitorial",
@@ -71,7 +84,7 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/mytuitorials/${params.id}`),
+          fetch(`https://sever-silde.vercel.app/mytuitorials/${params.id}`),
       },
     ],
   },

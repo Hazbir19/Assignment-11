@@ -11,11 +11,8 @@ const MyTuitorial = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchEquipments = async () => {
-      // const response = await fetch(
-      //   `https://sports-equipment-store-backend.vercel.app/items/${email}`
-      // );
       axios
-        .get(`http://localhost:5000/mytuitorial?email=${user.email}`, {
+        .get(`https://sever-silde.vercel.app/mytuitorial?email=${user.email}`, {
           withCredentials: true,
         })
         .then((res) => setData(res.data));
@@ -25,10 +22,12 @@ const MyTuitorial = () => {
   }, [email]);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/mytuitorials/${id}`, {
-        method: "DELETE",
-      });
-
+      const response = await fetch(
+        `https://sever-silde.vercel.app/mytuitorials/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const result = await response.json();
       Swal.fire({
         title: "Are you sure?",
@@ -107,7 +106,7 @@ const MyTuitorial = () => {
                 ))}
               </div>
             ) : (
-              <p>No equipment found for this email.</p>
+              <p>No Tuitor found for this email.</p>
             )}
           </div>
         </div>

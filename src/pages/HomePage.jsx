@@ -32,6 +32,63 @@ const HomePage = () => {
         console.log(error);
       });
   };
+  const testimonials = [
+    {
+      id: 1,
+      name: "Emily Johnson",
+      feedback:
+        "The tutors on this platform are outstanding! I've learned so much in just a few weeks.",
+      avatar: "https://example.com/avatars/emily.jpg",
+      role: "Student",
+    },
+    {
+      id: 2,
+      name: "Michael Smith",
+      feedback:
+        "Great experience with professional tutors. Highly recommend it!",
+      avatar: "https://example.com/avatars/michael.jpg",
+      role: "Parent",
+    },
+    {
+      id: 3,
+      name: "Sarah Brown",
+      feedback:
+        "This platform has transformed the way I learn new languages. Amazing support!",
+      avatar: "https://example.com/avatars/sarah.jpg",
+      role: "Student",
+    },
+  ];
+
+  const popularTutors = [
+    {
+      id: 1,
+      name: "Sophia Williams",
+      subject: "English",
+      rating: 4.9,
+      image: "https://i.ibb.co.com/0ZZLLmJ/Teacher-9.jpg",
+      reviews: 320,
+      price: "$30/hr",
+    },
+    {
+      id: 2,
+      name: "James Wilson",
+      subject: "Spanish",
+      rating: 4.8,
+      image: "https://i.ibb.co.com/S6VSF86/Teacher-1.jpg",
+      reviews: 250,
+      price: "$25/hr",
+    },
+    {
+      id: 3,
+      name: "Isabella Martinez",
+      subject: "French",
+      rating: 5.0,
+      image: "https://i.ibb.co.com/SxRL9L4/Teacher-4.jpg",
+      reviews: 400,
+      price: "$35/hr",
+    },
+  ];
+
   const languageCategories = [
     {
       logo: "https://example.com/logos/english.png",
@@ -39,7 +96,7 @@ const HomePage = () => {
     },
     {
       logo: "https://example.com/logos/spanish.png",
-      category: "Spanish",
+      category: "Spainish",
     },
     {
       logo: "https://example.com/logos/french.png",
@@ -175,17 +232,98 @@ const HomePage = () => {
       </div>
       <div>
         <div>
-          <div>
-            {languageCategories.map((category) => (
-              <>
-                <div>
-                  <img src={category.logo} alt="" />
-                  <p>{category.category}</p>
+          <div className="max-w-screen-2xl mx-auto px-4 py-12">
+            <h1 className="text-4xl font-bold mb-8">Choose a Language</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {languageCategories.map((category, index) => (
+                <div
+                  key={index}
+                  className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
+                  onClick={() => navigate(`/find-tutors/${category.category}`)}
+                >
+                  <img
+                    src={category.logo}
+                    alt={category.category}
+                    className="w-12 h-12"
+                  />
+                  <div className="ml-4 flex-1">
+                    <h3 className="text-xl font-semibold">
+                      {category.category}
+                    </h3>
+                  </div>
+                  <div>
+                    <span className="text-xl font-bold text-gray-500">→</span>
+                  </div>
                 </div>
-              </>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+      </div>
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Other Sections */}
+
+        {/* Testimonials Section */}
+        <section className="py-12">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            What Our Users Say
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.id}
+                className="bg-white p-6 rounded-lg shadow-md"
+              >
+                <div className="flex items-center mb-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full mr-4"
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold">{testimonial.name}</h3>
+                    <p className="text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">"{testimonial.feedback}"</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Popular Tutors Section */}
+        <section className="py-12">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Popular Tutors
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {popularTutors.map((tutor) => (
+              <div key={tutor.id} className="bg-white p-6 rounded-lg shadow-md">
+                <img
+                  src={tutor.image}
+                  alt={tutor.name}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+                <div className="mt-4">
+                  <h3 className="text-xl font-semibold">{tutor.name}</h3>
+                  <p className="text-gray-500">Subject: {tutor.subject}</p>
+                  <p className="text-gray-500">
+                    Rating: {tutor.rating} ⭐ ({tutor.reviews} reviews)
+                  </p>
+                  <p className="text-gray-500">Price: {tutor.price}</p>
+                  <button
+                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                    onClick={() =>
+                      alert(`Navigating to tutor ${tutor.name}'s profile`)
+                    }
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );
