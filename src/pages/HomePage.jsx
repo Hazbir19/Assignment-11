@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { ContextMain } from "../Context/ContextApi";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import CustomBanner from "../Components/CustomBanner";
+import LearningBenefitsSection from "../Components/LearningBenefitsSection";
+import BecomeTutorSection from "../Components/BecomeTutorSection";
 
 const HomePage = () => {
   const { HandleLogIn, HandleGoogleSignIn, user } = useContext(ContextMain);
@@ -129,81 +132,6 @@ const HomePage = () => {
   ];
   return (
     <>
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="hero w-full bg-white rounded-lg shadow-xl overflow-hidden">
-          <div class="hero-content flex-col lg:flex-row-reverse">
-            <div class="text-center lg:text-left">
-              <h1 class="text-5xl font-bold">Login now!</h1>
-              <p class="py-6">
-                The login feature ensures secure access to user-specific data,
-                personalized experiences, and protects sensitive information
-                from unauthorized access.
-              </p>
-            </div>
-            <div class="bg-gradient-to-tr from-purple-500/50 to-blue-200 rounded-xl  w-8/12 py-[3rem] my-[2rem] shrink-0 shadow-2xl">
-              <form className="mx-5" onSubmit={HandleSubmitBtn}>
-                <div className="max-w-screen-sm mx-auto  rounded-lg py-[5rem] px-[2rem] mt-[5rem] border-2 border-gray-200">
-                  <div className="lg:flex md:flex justify-evenly gap-5 w-full">
-                    <div className="form-control w-full">
-                      <label className="label"></label>
-                      <input
-                        type="text"
-                        placeholder="UserName"
-                        className="input input-bordered focus:bg-gray-200/50 focus:text-white focus:font-semibold focus:text-lg  "
-                        required
-                        name="username"
-                      />
-                    </div>
-                    <div className="form-control w-full">
-                      <label className="label"></label>
-                      <input
-                        type="email"
-                        placeholder="Your Email"
-                        className="input input-bordered focus:bg-gray-200/50 focus:text-white focus:font-semibold  focus:text-lg  "
-                        required
-                        name="email"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-control">
-                    <label className="label"></label>
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      className="input input-bordered focus:bg-gray-200/50 focus:text-white focus:font-semibold  focus:text-lg"
-                      required
-                      name="password"
-                    />
-                  </div>
-                  <div className="flex justify-center mt-[2rem] gap-5">
-                    <button
-                      className={`bg-purple-600/50 px-5 py-2 rounded-xl text-lg text-white font-bold hover:bg-purple-500/50 w-1/2 ${
-                        user && "hidden"
-                      }`}
-                    >
-                      Login
-                    </button>
-                    <div className="w-1/2 mx-auto">
-                      <button
-                        className="flex items-center justify-between bg-white px-5 py-2 rounded-xl lg:text-lg md:text-sm text-black font-bold hover:bg-gray-200/50 w-full"
-                        onClick={GoogleBtn}
-                      >
-                        <img
-                          src="https://i.ibb.co.com/LPZsMq5/Google-Icons-09-512-1.png"
-                          alt=""
-                          className="w-[1.5rem]"
-                        />
-                        SignIn With Google
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="stats stats-vertical lg:stats-horizontal md:stats-horizontal shadow w-full bg-white rounded-lg overflow-hidden">
           <div class="stat">
@@ -233,7 +161,11 @@ const HomePage = () => {
       <div>
         <div>
           <div className="max-w-screen-2xl mx-auto px-4 py-12">
-            <h1 className="text-4xl font-bold mb-8">Choose a Language</h1>
+            <CustomBanner
+              title={"Choose a Language"}
+              description={"Select a language to find tutors."}
+            />
+            {/* language Category */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {languageCategories.map((category, index) => (
                 <div
@@ -262,6 +194,7 @@ const HomePage = () => {
       </div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Other Sections */}
+        <LearningBenefitsSection></LearningBenefitsSection>
 
         {/* Testimonials Section */}
         <section className="py-12">
@@ -290,33 +223,40 @@ const HomePage = () => {
             ))}
           </div>
         </section>
-
+        {/* Become A Teacher */}
+        <BecomeTutorSection></BecomeTutorSection>
         {/* Popular Tutors Section */}
         <section className="py-12">
-          <h2 className="text-4xl font-bold text-center mb-8">
-            Popular Tutors
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <CustomBanner
+            className="text-4xl font-bold text-center mb-8"
+            title={"Popular Tutors"}
+            description={
+              "Explore our top-rated tutors who are ready to help you achieve your learning goals."
+            }
+          ></CustomBanner>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
             {popularTutors.map((tutor) => (
-              <div key={tutor.id} className="bg-white p-6 rounded-lg shadow-md">
-                <img
-                  src={tutor.image}
-                  alt={tutor.name}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold">{tutor.name}</h3>
-                  <p className="text-gray-500">Subject: {tutor.subject}</p>
-                  <p className="text-gray-500">
-                    Rating: {tutor.rating} ⭐ ({tutor.reviews} reviews)
-                  </p>
-                  <p className="text-gray-500">Price: {tutor.price}</p>
-                  <button
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                    onClick={() =>
-                      alert(`Navigating to tutor ${tutor.name}'s profile`)
-                    }
-                  >
+              <div
+                key={tutor.id}
+                className="bg-white flex flex-col h-[450px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={tutor.image}
+                    alt={tutor.name}
+                    className="w-full h-48 object-cover rounded-tr-lg rounded-br-lg transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-xl font-semibold">{tutor.name}</h3>
+                    <p className="text-gray-600">Subject: {tutor.subject}</p>
+                    <p className="text-gray-600">
+                      Rating: {tutor.rating} ⭐ ({tutor.reviews} reviews)
+                    </p>
+                    <p className="text-gray-600">Price: {tutor.price}</p>
+                  </div>
+                  <button className="mt-4  text-[#05154e] px-4 py-2 rounded-lg bg-[#e3c0f6]">
                     View Profile
                   </button>
                 </div>
