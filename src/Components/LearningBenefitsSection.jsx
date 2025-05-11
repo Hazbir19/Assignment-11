@@ -1,5 +1,5 @@
-import Card from "./Card";
-import CardContent from "./CardContent";
+import CustomCard from "./CustomCard";
+import CustomCardContent from "./CustomCardContent";
 
 const LearningBenefitsSection = () => {
   const benefits = [
@@ -15,11 +15,11 @@ const LearningBenefitsSection = () => {
           <h2 className="text-3xl font-semibold mb-8">Why Learn a Language?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {benefits.map((benefit, idx) => (
-              <Card key={idx}>
-                <CardContent className="p-6 text-lg font-medium">
+              <CustomCard key={idx}>
+                <CustomCardContent className="p-6 text-lg font-medium">
                   {benefit}
-                </CardContent>
-              </Card>
+                </CustomCardContent>
+              </CustomCard>
             ))}
           </div>
         </section>

@@ -5,9 +5,11 @@ import toast from "react-hot-toast";
 import CustomBanner from "../Components/CustomBanner";
 import LearningBenefitsSection from "../Components/LearningBenefitsSection";
 import BecomeTutorSection from "../Components/BecomeTutorSection";
+import HeroSection from "../Components/HeroSection";
+import HowItWorksSection from "../Components/HowItWorksSection";
 
 const HomePage = () => {
-  const { HandleLogIn, HandleGoogleSignIn, user } = useContext(ContextMain);
+  const { user } = useContext(ContextMain);
   const navigate = useNavigate();
   const HandleSubmitBtn = (e) => {
     e.preventDefault();
@@ -132,7 +134,10 @@ const HomePage = () => {
   ];
   return (
     <>
-      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        {/* Hero Section */}
+        <HeroSection></HeroSection>
+        {/* Stats Section */}
         <div class="stats stats-vertical lg:stats-horizontal md:stats-horizontal shadow w-full bg-white rounded-lg overflow-hidden">
           <div class="stat">
             <div class="stat-title">Tuitor Count</div>
@@ -195,6 +200,7 @@ const HomePage = () => {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Other Sections */}
         <LearningBenefitsSection></LearningBenefitsSection>
+        <HowItWorksSection></HowItWorksSection>
 
         {/* Testimonials Section */}
         <section className="py-12">

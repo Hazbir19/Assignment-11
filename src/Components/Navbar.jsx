@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextMain } from "../Context/ContextApi";
-import Mode from "../Hooks/Mode";
-
 const Navbar = () => {
   const { user, EmailsignOut } = useContext(ContextMain);
   return (
     <>
-      <div className="navbar  text-black font-bold h-[6rem]">
+      <div className="navbar  text-black font-bold h-[6rem] border border-gray-200/50 shadow-sm bg-gray-200/50 px-12">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,7 +54,7 @@ const Navbar = () => {
             <img
               src="https://i.ibb.co.com/RNqRd9q/Logo.jpg"
               alt=""
-              className="w-[3rem] rounded-full"
+              className="w-[4rem] rounded-full"
             />
           </Link>
         </div>
@@ -85,7 +83,6 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end lg:mr-[8rem]">
-          <Mode></Mode>
           <div>
             {user ? (
               <>
@@ -126,13 +123,23 @@ const Navbar = () => {
             ) : (
               <>
                 <div className="flex gap-5 justify-between items-center">
-                  <div>
-                    <Link
-                      to="/register"
-                      className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
-                    >
-                      Register
-                    </Link>
+                  <div className="hidden lg:flex gap-5 md:flex">
+                    <div>
+                      <Link
+                        to="/register"
+                        className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
+                      >
+                        Register
+                      </Link>
+                    </div>
+                    <div>
+                      <Link
+                        to="/login"
+                        className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
+                      >
+                        Login
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </>

@@ -12,6 +12,7 @@ import MyBooked from "../pages/MyBooked";
 import Update from "../pages/Update";
 import AllTuitor from "../pages/AllTuitor";
 import ErrorPage from "../Components/ErrorPage";
+import LoginPage from "../pages/LoginPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
       },
       {
         path: "/find-tuitor",

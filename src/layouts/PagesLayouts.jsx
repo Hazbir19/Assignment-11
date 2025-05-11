@@ -7,16 +7,16 @@ const PagesLayouts = () => {
   return (
     <>
       <div className="bg-[#fcfbfd] ">
+        <div>
+          <Navbar></Navbar>
+        </div>
         <div className="max-w-screen-xl mx-auto ">
-          <div>
-            <Navbar></Navbar>
-          </div>
-          <div className="min-h-[calc(100vh-15rem)] sm:px-6 lg:px-8 py-12">
+          <div className="min-h-[calc(100vh-15rem)] sm:px-6 lg:px-8 py-4">
             <Outlet></Outlet>
           </div>
-          <div>
-            <Footer></Footer>
-          </div>
+        </div>
+        <div>
+          <Footer></Footer>
         </div>
       </div>
     </>
