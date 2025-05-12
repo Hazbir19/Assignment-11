@@ -37,7 +37,7 @@ const Navbar = () => {
               <Link to={"/find-tuitor"} className="lg:text-xl text-lg">
                 Find Tuitor
               </Link>
-              {user?.role === "student" ? (
+              {user & (user?.role === "student") ? (
                 <>
                   <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
                     My Booked Tuitor
@@ -73,7 +73,7 @@ const Navbar = () => {
               Find Tuitor
             </Link>
 
-            {user?.role === "student" ? (
+            {user & (user?.role === "student") ? (
               <>
                 <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
                   My Booked Tuitor
