@@ -2,31 +2,46 @@ import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ContextMain } from "../Context/ContextApi";
+import CustomBanner from "../Components/CustomBanner";
+import { AxiosHook } from "../Hooks/UseAxiosHook";
 
 const Update = () => {
   const Updateduser = useLoaderData();
   console.log(Updateduser);
   const { user } = useContext(ContextMain);
-  const handleupdate = (e) => {
+  const image_hosting_key = import.meta.env.VITE_Image_hosting;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+  const handleupdate = async (e) => {
     e.preventDefault();
-    const PhotoUrl = e.target.PhotoUrl.value;
+    const PhotoUrl = e.target.image.files[0];
     const language = e.target.language.value;
     const price = e.target.price.value;
     const description = e.target.description.value;
+    const formData = new FormData();
+    formData.append("image", PhotoUrl);
+    const res = await AxiosHook.post(image_hosting_api, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    const imageUrl = res.data.data.display_url;
     const tuitorialInfo = {
-      PhotoUrl,
       language,
       price,
       description,
+      imageUrl,
     };
-    fetch(`http://localhost:5004/mytuitorials/${Updateduser._id}`, {
-      /** sent data in backend */
-      method: "PUT", //Update Keyword
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(tuitorialInfo), //sent data client from backend
-    })
+    fetch(
+      `https://assignment-11-server-six-liard.vercel.app/mytuitorials/${Updateduser._id}`,
+      {
+        /** sent data in backend */
+        method: "PUT", //Update Keyword
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tuitorialInfo), //sent data client from backend
+      }
+    )
       //from respons
       .then((res) => res.json())
       .then((data) => {
@@ -40,9 +55,9 @@ const Update = () => {
     <>
       <div>
         <div>
-          <h1>Updated Tuitorial</h1>
+          <CustomBanner title="Update Your Course"></CustomBanner>
           <form className="mx-5" onSubmit={handleupdate}>
-            <div className="max-w-screen-sm mx-auto bg-gradient-to-tr from-purple-500/50 to-[#ff9999] rounded-lg py-[3rem] px-[2rem] mt-[5rem]">
+            <div className="max-w-screen-sm mx-auto  rounded-lg py-8 px-8 mt-8">
               <div className="lg:flex md:flex justify-evenly gap-5 w-full">
                 <div className="form-control my-[1rem]">
                   <input
@@ -63,14 +78,10 @@ const Update = () => {
                   />
                 </div>
               </div>
-              <div className="form-control my-[1rem]">
-                <input
-                  type="text"
-                  placeholder="tutorial image"
-                  defaultValue={Updateduser.PhotoUrl}
-                  className="input input-bordered focus:bg-gray-200/50 focus:text-white focus:font-semibold focus:text-lg"
-                  name="PhotoUrl"
-                />
+              <div className="form-control my-2">
+                <fieldset class="fieldset">
+                  <input type="file" class="file-input" name="image" />
+                </fieldset>
               </div>
               <div className="lg:flex md:flex justify-center gap-5 w-full">
                 <div className="form-control my-[1rem] w-full">

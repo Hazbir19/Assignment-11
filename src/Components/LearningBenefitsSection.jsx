@@ -11,7 +11,7 @@ const LearningBenefitsSection = () => {
   return (
     <>
       <div>
-        <section className="py-12 bg-white text-center">
+        <section className="py-12  text-center">
           <h2 className="text-3xl font-semibold mb-8">Why Learn a Language?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {benefits.map((benefit, idx) => (

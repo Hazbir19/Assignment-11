@@ -1,9 +1,9 @@
-import axios from 'axios'
-import React from 'react'
+import axios from "axios";
 export const AxiosHook = axios.create({
-  baseURL: 'http://localhost:5004',})
- const UseAxiosHook = () => {
-    return AxiosHook;
-}
+  baseURL: "https://assignment-11-server-six-liard.vercel.app",
+});
+const UseAxiosHook = () => {
+  return AxiosHook;
+};
 
-export default UseAxiosHook
+export default UseAxiosHook;

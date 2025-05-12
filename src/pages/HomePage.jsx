@@ -1,42 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ContextMain } from "../Context/ContextApi";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import CustomBanner from "../Components/CustomBanner";
 import LearningBenefitsSection from "../Components/LearningBenefitsSection";
 import BecomeTutorSection from "../Components/BecomeTutorSection";
 import HeroSection from "../Components/HeroSection";
 import HowItWorksSection from "../Components/HowItWorksSection";
+import OfferCourses from "../Components/OfferCourses";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    in: {
+      opacity: 1,
+      y: 0,
+    },
+    out: {
+      opacity: 0,
+      y: -50,
+    },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.6,
+  };
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   const { user } = useContext(ContextMain);
   const navigate = useNavigate();
-  const HandleSubmitBtn = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    HandleLogIn(email, password)
-      .then((result) => {
-        toast.success("Your Logged In");
-        navigate("/");
-        return;
-      })
-      .catch((error) => {
-        toast.error("You email and password invaild ");
-      });
-  };
-  const GoogleBtn = () => {
-    HandleGoogleSignIn()
-      .then((result) => {
-        console.log(result);
-        toast.success("Your Logged In");
-        navigate("/");
-        return;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+
   const testimonials = [
     {
       id: 1,
@@ -134,143 +135,159 @@ const HomePage = () => {
   ];
   return (
     <>
-      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        {/* Hero Section */}
-        <HeroSection></HeroSection>
-        {/* Stats Section */}
-        <div class="stats stats-vertical lg:stats-horizontal md:stats-horizontal shadow w-full bg-white rounded-lg overflow-hidden">
-          <div class="stat">
-            <div class="stat-title">Tuitor Count</div>
-            <div class="stat-value">31K</div>
-            <div class="stat-desc">Exprience Tuitor</div>
-          </div>
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+      >
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          {/* Hero Section */}
+          <HeroSection></HeroSection>
+          {/* Stats Section */}
+          <div
+            data-aos="fade-up"
+            class="stats stats-vertical lg:stats-horizontal md:stats-horizontal shadow w-full bg-white rounded-lg overflow-hidden"
+          >
+            <div class="stat">
+              <div class="stat-title">Tuitor Count</div>
+              <div class="stat-value">31K</div>
+              <div class="stat-desc">Exprience Tuitor</div>
+            </div>
 
-          <div class="stat">
-            <div class="stat-title">Rating</div>
-            <div class="stat-value">47,200</div>
-            <div class="stat-desc">5 star tuitor</div>
-          </div>
+            <div class="stat">
+              <div class="stat-title">Rating</div>
+              <div class="stat-value">47,200</div>
+              <div class="stat-desc">5 star tuitor</div>
+            </div>
 
-          <div class="stat">
-            <div class="stat-title">Subjects</div>
-            <div class="stat-value">120+</div>
-            <div class="stat-desc">Subject taughts</div>
-          </div>
-          <div class="stat">
-            <div class="stat-title">Users</div>
-            <div class="stat-value">1,200</div>
-            <div class="stat-desc">New users 500+</div>
+            <div class="stat">
+              <div class="stat-title">Subjects</div>
+              <div class="stat-value">120+</div>
+              <div class="stat-desc">Subject taughts</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title">Users</div>
+              <div class="stat-value">1,200</div>
+              <div class="stat-desc">New users 500+</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
         <div>
-          <div className="max-w-screen-2xl mx-auto px-4 py-12">
-            <CustomBanner
-              title={"Choose a Language"}
-              description={"Select a language to find tutors."}
-            />
-            {/* language Category */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {languageCategories.map((category, index) => (
-                <div
-                  key={index}
-                  className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
-                  onClick={() => navigate("/find-tuitor")}
-                >
-                  <img
-                    src={category.logo}
-                    alt={category.category}
-                    className="w-12 h-12"
-                  />
-                  <div className="ml-4 flex-1">
-                    <h3 className="text-xl font-semibold">
-                      {category.category}
-                    </h3>
+          <div>
+            <div className="max-w-screen-2xl mx-auto px-4 py-12">
+              <CustomBanner
+                title={"Choose a Language"}
+                description={"Select a language to find tutors."}
+              />
+              {/* language Category */}
+              <div
+                data-aos="fade-down"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {languageCategories.map((category, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
+                    onClick={() => navigate("/find-tuitor")}
+                  >
+                    <img
+                      src={category.logo}
+                      alt={category.category}
+                      className="w-12 h-12"
+                    />
+                    <div className="ml-4 flex-1">
+                      <h3 className="text-xl font-semibold">
+                        {category.category}
+                      </h3>
+                    </div>
+                    <div>
+                      <span className="text-xl font-bold text-gray-500">→</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xl font-bold text-gray-500">→</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Other Sections */}
+          <LearningBenefitsSection></LearningBenefitsSection>
+          <HowItWorksSection></HowItWorksSection>
+          <OfferCourses></OfferCourses>
+          {/* Testimonials Section */}
+          <section className="py-12">
+            <h2 className="text-4xl font-bold text-center mb-8">
+              What Our Users Say
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="bg-white p-6 rounded-lg shadow-md"
+                >
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-16 h-16 rounded-full mr-4"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold">{testimonial.name}</h3>
+                      <p className="text-gray-500">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 italic">
+                    "{testimonial.feedback}"
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+          {/* Become A Teacher */}
+          <BecomeTutorSection></BecomeTutorSection>
+          {/* Popular Tutors Section */}
+          <section className="py-12">
+            <CustomBanner
+              className="text-4xl font-bold text-center mb-8"
+              title={"Popular Tutors"}
+              description={
+                "Explore our top-rated tutors who are ready to help you achieve your learning goals."
+              }
+            ></CustomBanner>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+              {popularTutors.map((tutor) => (
+                <div
+                  key={tutor.id}
+                  className="bg-white flex flex-col h-[450px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="overflow-hidden">
+                    <img
+                      src={tutor.image}
+                      alt={tutor.name}
+                      className="w-full h-48 object-cover rounded-tr-lg rounded-br-lg transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col justify-between flex-1">
+                    <div>
+                      <h3 className="text-xl font-semibold">{tutor.name}</h3>
+                      <p className="text-gray-600">Subject: {tutor.subject}</p>
+                      <p className="text-gray-600">
+                        Rating: {tutor.rating} ⭐ ({tutor.reviews} reviews)
+                      </p>
+                      <p className="text-gray-600">Price: {tutor.price}</p>
+                    </div>
+                    <button className="mt-4  text-[#05154e] px-4 py-2 rounded-lg bg-[#e3c0f6]">
+                      View Profile
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         </div>
-      </div>
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Other Sections */}
-        <LearningBenefitsSection></LearningBenefitsSection>
-        <HowItWorksSection></HowItWorksSection>
-
-        {/* Testimonials Section */}
-        <section className="py-12">
-          <h2 className="text-4xl font-bold text-center mb-8">
-            What Our Users Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="bg-white p-6 rounded-lg shadow-md"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full mr-4"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold">{testimonial.name}</h3>
-                    <p className="text-gray-500">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 italic">"{testimonial.feedback}"</p>
-              </div>
-            ))}
-          </div>
-        </section>
-        {/* Become A Teacher */}
-        <BecomeTutorSection></BecomeTutorSection>
-        {/* Popular Tutors Section */}
-        <section className="py-12">
-          <CustomBanner
-            className="text-4xl font-bold text-center mb-8"
-            title={"Popular Tutors"}
-            description={
-              "Explore our top-rated tutors who are ready to help you achieve your learning goals."
-            }
-          ></CustomBanner>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
-            {popularTutors.map((tutor) => (
-              <div
-                key={tutor.id}
-                className="bg-white flex flex-col h-[450px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={tutor.image}
-                    alt={tutor.name}
-                    className="w-full h-48 object-cover rounded-tr-lg rounded-br-lg transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="text-xl font-semibold">{tutor.name}</h3>
-                    <p className="text-gray-600">Subject: {tutor.subject}</p>
-                    <p className="text-gray-600">
-                      Rating: {tutor.rating} ⭐ ({tutor.reviews} reviews)
-                    </p>
-                    <p className="text-gray-600">Price: {tutor.price}</p>
-                  </div>
-                  <button className="mt-4  text-[#05154e] px-4 py-2 rounded-lg bg-[#e3c0f6]">
-                    View Profile
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import CustomBanner from "./../Components/CustomBanner";
 
 const MyTuitorial = () => {
   const { user } = useContext(ContextMain);
@@ -12,9 +13,12 @@ const MyTuitorial = () => {
   useEffect(() => {
     const fetchEquipments = async () => {
       axios
-        .get(`http://localhost:5004/mytuitorial?email=${user.email}`, {
-          withCredentials: true,
-        })
+        .get(
+          `https://assignment-11-server-six-liard.vercel.app/mytuitorial?email=${user.email}`,
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => setData(res.data));
     };
 
@@ -22,9 +26,12 @@ const MyTuitorial = () => {
   }, [email]);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5004/mytuitorials/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://assignment-11-server-six-liard.vercel.app/mytuitorials/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const result = await response.json();
       Swal.fire({
         title: "Are you sure?",
@@ -58,45 +65,41 @@ const MyTuitorial = () => {
   return (
     <>
       <div>
-        <h1 className="text-center lg:text-5xl md:text-2xl sm:text-lg bg-white p-5 mt-5">
-          My Tutorial {data.length}
-        </h1>
+        <CustomBanner title="Your Courses">{data.length}</CustomBanner>
         <div>
           <div>
             {data.length > 0 ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 items-center mt-5">
                 {data.map((item) => (
                   <>
-                    <div className="w-full mx-auto">
-                      <div className="card card-compact bg-base-100 w-96 mx-auto shadow-xl">
-                        <figure>
-                          <img
-                            src={item.PhotoUrl}
-                            alt="Shoes"
-                            className="w-[15rem] p-3 rounded-lg mx-auto"
-                          />
-                        </figure>
-                        <div className="card-body">
-                          <h2 className="card-title">
-                            Language: {item.language}
-                          </h2>
-                          <p> Description: {item.description}</p>
-                          <p> Review: {item.review}</p>
-                          <div className="card-actions justify-end">
-                            <Link to={`/update/${item._id}`}>
-                              <button className="btn btn-primary">
-                                Update
-                              </button>
-                            </Link>
+                    <div
+                      key={item.id}
+                      className="p-2 bg-white rounded-lg shadow-md"
+                    >
+                      <img
+                        src={item?.imageUrl}
+                        alt={item.name}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      <div className="p-4">
+                        <h2 className="text-xl font-semibold">{item.name}</h2>
+                        <p className="text-gray-600">
+                          Language: {item.language}
+                        </p>
+                        <p className="text-gray-600">Price: ${item.price}</p>
+                        <p className="text-gray-600">Reviews: {item.review}</p>
+                      </div>
+                      <div className="card-actions justify-end">
+                        <Link to={`/update/${item._id}`}>
+                          <button className="btn btn-primary">Update</button>
+                        </Link>
 
-                            <button
-                              className="btn btn-primary"
-                              onClick={() => handleDelete(item._id)}
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        </div>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => handleDelete(item._id)}
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </>

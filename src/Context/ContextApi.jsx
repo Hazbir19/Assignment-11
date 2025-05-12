@@ -46,22 +46,32 @@ const ContextApi = ({ children }) => {
   };
   //User Moninitoring in App
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         console.log("Current user", currentUser);
+        // Get additional user data from your DB
+        const res = await axios.get(
+          `https://assignment-11-server-six-liard.vercel.app/users/${currentUser?.email}`
+        );
+        const userData = res.data;
         SetUser({
           name: currentUser.displayName,
           photo: currentUser.photoURL,
           email: currentUser.email,
+          role: userData.role,
         });
         console.log("Current state", currentUser?.email);
 
         if (currentUser?.email) {
           const user = { email: currentUser.email };
           axios
-            .post("http://localhost:5004/jwt", user, {
-              withCredentials: true,
-            })
+            .post(
+              "https://assignment-11-server-six-liard.vercel.app/jwt",
+              user,
+              {
+                withCredentials: true,
+              }
+            )
             .then((res) => {
               console.log("login Token", res.data);
             });

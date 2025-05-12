@@ -7,7 +7,7 @@ import AddTuitorial from "../pages/AddTuitorial";
 import PrivateRouter from "../Private/PrivateRouter";
 import MyTuitorial from "../pages/MyTuitorial";
 import TuitorDetails from "../pages/TuitorDetails";
-import FindTuitor from "../pages/FindTuitor";
+
 import MyBooked from "../pages/MyBooked";
 import Update from "../pages/Update";
 import AllTuitor from "../pages/AllTuitor";
@@ -35,19 +35,19 @@ const router = createBrowserRouter([
       {
         path: "/find-tuitor",
         element: <AllTuitor></AllTuitor>,
-        loader: () => fetch("http://localhost:5004/tuitorial"),
-      },
-      {
-        path: "/find-tutors/:language",
-        element: <FindTuitor></FindTuitor>,
+        loader: () =>
+          fetch("https://assignment-11-server-six-liard.vercel.app/tuitorial"),
       },
       {
         path: "/details/:id",
         element: <TuitorDetails></TuitorDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5004/tuitorial/${params.id}`, {
-            withCredentials: true,
-          }),
+          fetch(
+            `https://assignment-11-server-six-liard.vercel.app/tuitorial/${params.id}`,
+            {
+              withCredentials: true,
+            }
+          ),
       },
       {
         path: "/add-tuitorial",
@@ -89,7 +89,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5004/mytuitorials/${params.id}`),
+          fetch(
+            `https://assignment-11-server-six-liard.vercel.app/mytuitorials/${params.id}`
+          ),
       },
     ],
   },

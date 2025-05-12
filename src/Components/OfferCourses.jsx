@@ -1,16 +1,29 @@
-import { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ContextMain } from "../Context/ContextApi";
+import CustomBanner from "./CustomBanner";
 
-const AllTuitor = () => {
-  const { user } = useContext(ContextMain);
-  const allData = useLoaderData();
-
-  return (
-    <>
-      <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
-          {allData.map((tutor) => (
+const OfferCourses = () => {
+    const [courses, setCourses] = useState([]);
+      const { user } = useContext(ContextMain);
+    
+   useEffect(() => {
+    axios.get("https://vercel.com/sport-equipment-stores-projects/assignment-11-server/tuitorials")
+      .then(res => {
+        setCourses(res.data);
+      })
+      .catch(err => {
+        console.error("Error fetching tutorials:", err);
+      });
+  }, []);
+    
+    return (
+        <>
+        <div>
+            <CustomBanner title={"Our Offer Courses "}></CustomBanner>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
+          {courses.map((tutor) => (
             <div key={tutor.id} className="p-2 bg-white rounded-lg shadow-md">
               <img
                 src={tutor?.imageUrl}
@@ -35,9 +48,9 @@ const AllTuitor = () => {
             </div>
           ))}
         </div>
-      </div>
-    </>
-  );
-};
+        </div>
+        </>
+    )
+}
 
-export default AllTuitor;
+export default OfferCourses

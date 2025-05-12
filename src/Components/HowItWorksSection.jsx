@@ -16,7 +16,7 @@ const HowItWorksSection = () => {
   ];
   return (
     <div>
-      <section className="py-12 bg-white text-center">
+      <section className="py-12  text-center shadow-sm">
         <h2 className="text-3xl font-semibold mb-8">How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {steps.map((step) => (

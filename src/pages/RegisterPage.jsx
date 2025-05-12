@@ -43,7 +43,7 @@ const RegisterPage = () => {
           photoURL: imageUrl,
         }).then((result) => {
           //User create Operation: method post hit in this localpath
-          fetch("http://localhost:5004/users", {
+          fetch("https://assignment-11-server-six-liard.vercel.app/users", {
             method: "POST", //user create method
             headers: {
               "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const RegisterPage = () => {
               name="password"
             />
           </div>
-          <div>
+          <div className="lg:flex md:flex items-center gap-5 w-full">
             <div className="form-control my-2">
               <fieldset class="fieldset">
                 <input type="file" class="file-input" name="image" />

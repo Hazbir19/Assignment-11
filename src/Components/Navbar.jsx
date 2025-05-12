@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ContextMain } from "../Context/ContextApi";
 const Navbar = () => {
   const { user, EmailsignOut } = useContext(ContextMain);
+  const role = user?.role;
+  console.log(role);
   return (
     <>
       <div className="navbar  text-black font-bold h-[6rem] border border-gray-200/50 shadow-sm bg-gray-200/50 px-12">
@@ -35,7 +37,13 @@ const Navbar = () => {
               <Link to={"/find-tuitor"} className="lg:text-xl text-lg">
                 Find Tuitor
               </Link>
-              {user && (
+              {user?.role === "student" ? (
+                <>
+                  <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
+                    My Booked Tuitor
+                  </Link>
+                </>
+              ) : (
                 <>
                   <Link to={"/add-tuitorial"} className="lg:text-xl text-lg">
                     Add Tuitorial
@@ -43,18 +51,16 @@ const Navbar = () => {
                   <Link to={"/my-tuitorial"} className="lg:text-xl text-lg">
                     My Tuitorial
                   </Link>
-                  <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
-                    My Booked Tuitor
-                  </Link>
                 </>
               )}
             </ul>
           </div>
+          {/* icon image */}
           <Link to={"/"} className="text-xl cursor-pointer ml-12">
             <img
               src="https://i.ibb.co.com/RNqRd9q/Logo.jpg"
               alt=""
-              className="w-[4rem] rounded-full"
+              className="lg:w-[4rem] md:w-[2.5rem] w-[2.7rem] rounded-full"
             />
           </Link>
         </div>
@@ -67,16 +73,19 @@ const Navbar = () => {
               Find Tuitor
             </Link>
 
-            {user && (
+            {user?.role === "student" ? (
+              <>
+                <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
+                  My Booked Tuitor
+                </Link>
+              </>
+            ) : (
               <>
                 <Link to={"/add-tuitorial"} className="lg:text-xl text-lg">
                   Add Tuitorial
                 </Link>
                 <Link to={"/my-tuitorial"} className="lg:text-xl text-lg">
                   My Tuitorial
-                </Link>
-                <Link to={"/mybooked-tuitor"} className="lg:text-xl text-lg">
-                  My Booked Tuitor
                 </Link>
               </>
             )}
@@ -123,11 +132,11 @@ const Navbar = () => {
             ) : (
               <>
                 <div className="flex gap-5 justify-between items-center">
-                  <div className="hidden lg:flex gap-5 md:flex">
+                  <div className="flex lg:flex gap-1 md:flex ml-2">
                     <div>
                       <Link
                         to="/register"
-                        className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
+                        className="px-2 md:px-3 md:py-3 lg:px-5 lg:py-3 py-2 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
                       >
                         Register
                       </Link>
@@ -135,7 +144,7 @@ const Navbar = () => {
                     <div>
                       <Link
                         to="/login"
-                        className="px-5 py-3 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
+                        className="px-2 md:px-3 md:py-3 lg:px-5 lg:py-3 py-2 rounded-lg bg-white text-purple-400/60 hover:text-purple-700 hover:bg-slate-50"
                       >
                         Login
                       </Link>

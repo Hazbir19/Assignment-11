@@ -6,8 +6,17 @@ import { ContextMain } from "../Context/ContextApi";
 const TuitorDetails = () => {
   const { user } = useContext(ContextMain);
   const idData = useLoaderData();
-  const { _id, name, email, language, price, PhotoUrl, description, review } =
-    idData;
+  const {
+    _id,
+    name,
+    email,
+    language,
+    price,
+    PhotoUrl,
+    description,
+    review,
+    imageUrl,
+  } = idData;
   const HandleBooked = () => {
     const info = {
       tutorId: _id,
@@ -19,8 +28,9 @@ const TuitorDetails = () => {
       price,
       description,
       review,
+      imageUrl,
     };
-    fetch("http://localhost:5004/mybooked-tuitor", {
+    fetch("https://assignment-11-server-six-liard.vercel.app/mybooked-tuitor", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +54,7 @@ const TuitorDetails = () => {
           <div className="bg-white shadow-md rounded-lg p-6">
             <div className="flex flex-col md:flex-row">
               <img
-                src={PhotoUrl}
+                src={imageUrl}
                 alt={name}
                 className="w-full md:w-1/3 rounded-md shadow-lg mb-4 md:mb-0 md:mr-6"
               />
