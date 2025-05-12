@@ -12,7 +12,7 @@ const MyTuitorial = () => {
   useEffect(() => {
     const fetchEquipments = async () => {
       axios
-        .get(`https://sever-silde.vercel.app/mytuitorial?email=${user.email}`, {
+        .get(`http://localhost:5004/mytuitorial?email=${user.email}`, {
           withCredentials: true,
         })
         .then((res) => setData(res.data));
@@ -22,12 +22,9 @@ const MyTuitorial = () => {
   }, [email]);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(
-        `https://sever-silde.vercel.app/mytuitorials/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://localhost:5004/mytuitorials/${id}`, {
+        method: "DELETE",
+      });
       const result = await response.json();
       Swal.fire({
         title: "Are you sure?",

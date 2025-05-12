@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/find-tuitor",
         element: <AllTuitor></AllTuitor>,
-        loader: () => fetch("https://sever-silde.vercel.app/tuitorial"),
+        loader: () => fetch("http://localhost:5004/tuitorial"),
       },
       {
         path: "/find-tutors/:language",
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <TuitorDetails></TuitorDetails>,
         loader: ({ params }) =>
-          fetch(`https://sever-silde.vercel.app/tuitorial/${params.id}`, {
+          fetch(`http://localhost:5004/tuitorial/${params.id}`, {
             withCredentials: true,
           }),
       },
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://sever-silde.vercel.app/mytuitorials/${params.id}`),
+          fetch(`http://localhost:5004/mytuitorials/${params.id}`),
       },
     ],
   },

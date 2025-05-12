@@ -7,8 +7,9 @@ import {
   signOut,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import auth from "../Firebase/Firebase.config";
+
 import axios from "axios";
+import auth from "../Firebase/Firebase.config";
 export const ContextMain = createContext();
 const ContextApi = ({ children }) => {
   //User State
@@ -58,7 +59,7 @@ const ContextApi = ({ children }) => {
         if (currentUser?.email) {
           const user = { email: currentUser.email };
           axios
-            .post("https://sever-silde.vercel.app/jwt", user, {
+            .post("http://localhost:5004/jwt", user, {
               withCredentials: true,
             })
             .then((res) => {

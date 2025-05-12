@@ -176,7 +176,7 @@ const HomePage = () => {
                 <div
                   key={index}
                   className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
-                  onClick={() => navigate(`/find-tutors/${category.category}`)}
+                  onClick={() => navigate("/find-tuitor")}
                 >
                   <img
                     src={category.logo}

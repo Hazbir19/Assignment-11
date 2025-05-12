@@ -19,7 +19,7 @@ const Update = () => {
       price,
       description,
     };
-    fetch(`https://sever-silde.vercel.app/mytuitorials/${Updateduser._id}`, {
+    fetch(`http://localhost:5004/mytuitorials/${Updateduser._id}`, {
       /** sent data in backend */
       method: "PUT", //Update Keyword
       headers: {

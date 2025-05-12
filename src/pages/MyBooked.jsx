@@ -12,7 +12,7 @@ const MyBooked = () => {
     const fetchBookedTutors = async () => {
       try {
         const response = await fetch(
-          `https://sever-silde.vercel.app/mybooked-tuitor?email=${user.email}`
+          `http://localhost:5004/mybooked-tuitor?email=${user.email}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -30,7 +30,7 @@ const MyBooked = () => {
   const handleReview = async (tutorId) => {
     try {
       const response = await fetch(
-        `https://sever-silde.vercel.app/mybooked-tuitor/${tutorId}`,
+        `http://localhost:5004/mybooked-tuitor/${tutorId}`,
         {
           method: "PATCH",
           headers: {

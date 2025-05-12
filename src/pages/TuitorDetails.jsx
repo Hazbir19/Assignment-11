@@ -20,7 +20,7 @@ const TuitorDetails = () => {
       description,
       review,
     };
-    fetch("https://sever-silde.vercel.app/mybooked-tuitor", {
+    fetch("http://localhost:5004/mybooked-tuitor", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
