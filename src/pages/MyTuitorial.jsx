@@ -14,7 +14,7 @@ const MyTuitorial = () => {
     const fetchEquipments = async () => {
       axios
         .get(
-          `https://assignment-11-server-six-liard.vercel.app/mytuitorial?email=${user.email}`,
+          `https://assignment-11-server-six-liard.vercel.app/mytuitorial?email=${user?.email}`,
           {
             withCredentials: true,
           }
@@ -68,7 +68,7 @@ const MyTuitorial = () => {
         <CustomBanner title="Your Courses">{data.length}</CustomBanner>
         <div>
           <div>
-            {data.length > 0 ? (
+            {data?.length > 0 ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 items-center mt-5">
                 {data.map((item) => (
                   <>

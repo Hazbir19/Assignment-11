@@ -9,11 +9,12 @@ const OfferCourses = () => {
       const { user } = useContext(ContextMain);
     
    useEffect(() => {
-    axios.get("https://vercel.com/sport-equipment-stores-projects/assignment-11-server/tuitorials")
-      .then(res => {
+    axios
+      .get("https://assignment-11-server-six-liard.vercel.app/tuitorials")
+      .then((res) => {
         setCourses(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error fetching tutorials:", err);
       });
   }, []);
