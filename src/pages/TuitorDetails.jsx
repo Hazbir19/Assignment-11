@@ -49,9 +49,8 @@ const TuitorDetails = () => {
   return (
     <>
       <div>
-        <h1>Tuitor Details</h1>
         <div className="container mx-auto px-4 py-6">
-          <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="bg-background shadow-sm rounded-lg p-6">
             <div className="flex flex-col md:flex-row">
               <img
                 src={imageUrl}
@@ -74,7 +73,7 @@ const TuitorDetails = () => {
                 </p>
                 <button
                   onClick={HandleBooked}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+                  className="bg-accent font-title font-semibold text-text px-4 py-2 rounded-md"
                 >
                   Book
                 </button>

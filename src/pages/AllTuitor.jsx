@@ -9,9 +9,12 @@ const AllTuitor = () => {
   return (
     <>
       <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-3 my-8 ">
           {allData.map((tutor) => (
-            <div key={tutor.id} className="p-2 bg-white rounded-lg shadow-md">
+            <div
+              key={tutor.id}
+              className="p-2 bg-background rounded-lg shadow-md w-11/12 mx-auto"
+            >
               <img
                 src={tutor?.imageUrl}
                 alt={tutor.name}
@@ -26,7 +29,7 @@ const AllTuitor = () => {
                   <button
                     className={`${
                       user?.role === "teacher" ? "hidden" : "block"
-                    } mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg`}
+                    } mt-4 bg-accent text-text font-medium font-body px-4 py-2 rounded-lg`}
                   >
                     View Details
                   </button>

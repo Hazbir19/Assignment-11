@@ -1,19 +1,21 @@
 import ButtonSecondary from "./ButtonSecondary";
 import ImageGif from "../assets/Video tutorial.gif";
+import CustomBanner from "./CustomBanner";
 
 const BecomeTutorSection = () => {
   return (
-    <section className="py-12 shadow-sm border border-gray-100 rounded-md text-center lg:flex md:flex">
+    <section className="py-12 shadow-sm rounded-md text-center lg:flex md:flex">
       <div
         className="text-center flex items-center
       mx-2"
       >
         <div>
-          <h2 className="lg:text-3xl font-semibold mb-4">Become a Tutor</h2>
-          <p className="mb-6">
-            Share your knowledge and help students learn new languages
-            worldwide.
-          </p>
+          <CustomBanner
+            title={"Become a Tutor"}
+            description={
+              " Share your knowledge and help students learn new languages worldwide."
+            }
+          ></CustomBanner>
           <ButtonSecondary ButtonTitle={"Join as a Tutor"}></ButtonSecondary>
         </div>
       </div>

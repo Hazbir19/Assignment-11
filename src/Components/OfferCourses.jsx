@@ -5,10 +5,10 @@ import { ContextMain } from "../Context/ContextApi";
 import CustomBanner from "./CustomBanner";
 
 const OfferCourses = () => {
-    const [courses, setCourses] = useState([]);
-      const { user } = useContext(ContextMain);
-    
-   useEffect(() => {
+  const [courses, setCourses] = useState([]);
+  const { user } = useContext(ContextMain);
+
+  useEffect(() => {
     axios
       .get("https://assignment-11-server-six-liard.vercel.app/tuitorials")
       .then((res) => {
@@ -18,14 +18,17 @@ const OfferCourses = () => {
         console.error("Error fetching tutorials:", err);
       });
   }, []);
-    
-    return (
-        <>
-        <div>
-            <CustomBanner title={"Our Offer Courses "}></CustomBanner>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
+
+  return (
+    <>
+      <div>
+        <CustomBanner title={"Our Offer Courses "}></CustomBanner>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
           {courses.map((tutor) => (
-            <div key={tutor.id} className="p-2 bg-white rounded-lg shadow-md">
+            <div
+              key={tutor.id}
+              className="p-2 bg-background rounded-lg shadow-md"
+            >
               <img
                 src={tutor?.imageUrl}
                 alt={tutor.name}
@@ -40,7 +43,7 @@ const OfferCourses = () => {
                   <button
                     className={`${
                       user?.role === "teacher" ? "hidden" : "block"
-                    } mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg`}
+                    } mt-4 bg-accent text-text font-body font-medium px-4 py-2 rounded-lg`}
                   >
                     View Details
                   </button>
@@ -49,9 +52,9 @@ const OfferCourses = () => {
             </div>
           ))}
         </div>
-        </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 
-export default OfferCourses
+export default OfferCourses;

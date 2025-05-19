@@ -3,10 +3,10 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="footer bg-neutral text-neutral-content p-10">
+      <footer className="footer bg-background text-text border border-t-gray-200 p-10">
         <aside>
           <img
-            src="https://i.ibb.co.com/RNqRd9q/Logo.jpg"
+            src="https://i.ibb.co/xSwWbmsq/Logo-removebg-preview.png"
             alt=""
             className="w-[3rem] rounded-full"
           />

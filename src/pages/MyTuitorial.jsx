@@ -69,12 +69,12 @@ const MyTuitorial = () => {
         <div>
           <div>
             {data?.length > 0 ? (
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 items-center mt-5">
+              <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 w-10/12 lg:w-full md:w-11/12 mx-auto gap-12 items-center mt-5">
                 {data.map((item) => (
                   <>
                     <div
                       key={item.id}
-                      className="p-2 bg-white rounded-lg shadow-md"
+                      className="p-2 bg-background rounded-lg shadow-md"
                     >
                       <img
                         src={item?.imageUrl}
@@ -91,11 +91,13 @@ const MyTuitorial = () => {
                       </div>
                       <div className="card-actions justify-end">
                         <Link to={`/update/${item._id}`}>
-                          <button className="btn btn-primary">Update</button>
+                          <button className="btn bg-accent font-body font-semibold text-text">
+                            Update
+                          </button>
                         </Link>
 
                         <button
-                          className="btn btn-primary"
+                          className="btn bg-accent font-body font-semibold text-text"
                           onClick={() => handleDelete(item._id)}
                         >
                           Delete

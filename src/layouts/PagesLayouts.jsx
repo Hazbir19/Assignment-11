@@ -6,15 +6,15 @@ import Footer from "../Components/Footer";
 const PagesLayouts = () => {
   return (
     <>
-      <div className="bg-[#fcfbfd] ">
+      <div className="bg-[#fcfbfd] overflow-x-hidden ">
         <div>
           <Navbar></Navbar>
         </div>
-        <div className="max-w-screen-xl mx-auto ">
-          <div className="min-h-[calc(100vh-15rem)] sm:px-6 lg:px-8 py-4">
-            <Outlet></Outlet>
-          </div>
+
+        <div className="min-h-[calc(100vh-15rem)] max-w-screen-xl mx-auto overflow-x-hidden">
+          <Outlet></Outlet>
         </div>
+
         <div>
           <Footer></Footer>
         </div>

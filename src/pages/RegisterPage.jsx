@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 import UseAxiosHook from "../Hooks/UseAxiosHook";
+import axios from "axios";
 
 const RegisterPage = () => {
   const { handleEmailSignIn, validatePassword } = useContext(ContextMain);
@@ -25,7 +26,7 @@ const RegisterPage = () => {
     }
     const formData = new FormData();
     formData.append("image", photo);
-    const res = await AxiosHook.post(image_hosting_api, formData, {
+    const res = await axios.post(image_hosting_api, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

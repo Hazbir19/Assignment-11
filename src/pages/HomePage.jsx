@@ -44,7 +44,7 @@ const HomePage = () => {
       name: "Emily Johnson",
       feedback:
         "The tutors on this platform are outstanding! I've learned so much in just a few weeks.",
-      avatar: "https://example.com/avatars/emily.jpg",
+      avatar: "https://i.ibb.co/Jjp7QNq6/Teacher-10.jpg",
       role: "Student",
     },
     {
@@ -52,7 +52,7 @@ const HomePage = () => {
       name: "Michael Smith",
       feedback:
         "Great experience with professional tutors. Highly recommend it!",
-      avatar: "https://example.com/avatars/michael.jpg",
+      avatar: "https://i.ibb.co/QwqVrmw/Anycolor-20250217-183138.png",
       role: "Parent",
     },
     {
@@ -60,7 +60,7 @@ const HomePage = () => {
       name: "Sarah Brown",
       feedback:
         "This platform has transformed the way I learn new languages. Amazing support!",
-      avatar: "https://example.com/avatars/sarah.jpg",
+      avatar: "https://i.ibb.co/SxRL9L4/Teacher-4.jpg",
       role: "Student",
     },
   ];
@@ -93,44 +93,120 @@ const HomePage = () => {
       reviews: 400,
       price: "$35/hr",
     },
+    {
+      id: 4,
+      name: "Josim Babu",
+      subject: "Spainish",
+      rating: 5.0,
+      image: "https://i.ibb.co/Z0bRBZV/Teacher-3.jpg",
+      reviews: 400,
+      price: "$35/hr",
+    },
   ];
 
   const languageCategories = [
     {
-      logo: "https://example.com/logos/english.png",
+      logo: "https://i.ibb.co/bgVLxmXc/English.png",
       category: "English",
     },
     {
-      logo: "https://example.com/logos/spanish.png",
+      logo: "https://i.ibb.co/bg4dztWR/Spanish.jpg",
       category: "Spainish",
     },
     {
-      logo: "https://example.com/logos/french.png",
+      logo: "https://i.ibb.co/ksQ6DYTr/Fracnh.jpg",
       category: "French",
     },
     {
-      logo: "https://example.com/logos/chinese.png",
+      logo: "https://i.ibb.co/FqLS9K7z/Chinese-logo.png",
       category: "Chinese",
     },
     {
-      logo: "https://example.com/logos/arabic.png",
+      logo: "https://i.ibb.co/S4Q0J71x/Arabic-logo.png",
       category: "Arabic",
     },
     {
-      logo: "https://example.com/logos/russian.png",
+      logo: "https://i.ibb.co/gbzfGQKt/Russian-logo.jpg",
       category: "Russian",
     },
     {
-      logo: "https://example.com/logos/japanese.png",
+      logo: "https://i.ibb.co/GQNmQhM7/Japanese-language.jpg",
       category: "Japanese",
     },
     {
-      logo: "https://example.com/logos/german.png",
+      logo: "https://i.ibb.co/xSPr86pz/German-language.jpg",
       category: "German",
     },
     {
-      logo: "https://example.com/logos/hindi.png",
+      logo: "https://i.ibb.co/ZRpf7vDV/Hindi-logo.jpg",
       category: "Hindi",
+    },
+  ];
+  const communityHighlights = [
+    "Over 50,000 students enrolled",
+    "Active tutors from 30+ countries",
+    "Daily interactive sessions",
+    "Community events and webinars",
+    "Language challenges and rewards",
+    "Global student network",
+    "Real-time Q&A with mentors",
+    "Certificate on course completion",
+  ];
+  const upcomingCourses = [
+    "Mandarin Mastery - Intermediate",
+    "Spanish for Travel",
+    "Business French Basics",
+    "German Conversation Skills",
+    "Arabic for Beginners",
+    "Advanced English Grammar",
+    "Japanese Writing Workshop",
+    "Hindi Speaking Practice",
+  ];
+  const successStories = [
+    {
+      id: 1,
+      name: "Ayesha Khan",
+      story:
+        "Started learning Arabic and landed a translation job in 6 months!",
+    },
+    {
+      id: 2,
+      name: "Liam Chen",
+      story:
+        "Passed JLPT N3 with flying colors using our structured Japanese modules.",
+    },
+    {
+      id: 3,
+      name: "Sophie Müller",
+      story:
+        "Improved my English fluency and got promoted to team lead at work.",
+    },
+    {
+      id: 4,
+      name: "Carlos Rivera",
+      story: "Thanks to the Spanish classes, I now teach Spanish locally!",
+    },
+    {
+      id: 5,
+      name: "Rania El-Tayeb",
+      story: "Our daughter became fluent in French and earned a scholarship.",
+    },
+    {
+      id: 6,
+      name: "Jinwoo Park",
+      story:
+        "Mastered business English and expanded my online business internationally.",
+    },
+    {
+      id: 7,
+      name: "Emilia Rossi",
+      story: "The Italian beginner course helped me reconnect with my roots.",
+    },
+    {
+      id: 8,
+      name: "Zara Patel",
+      story:
+        "After learning Hindi, I could finally talk to my grandparents in their language.",
     },
   ];
   return (
@@ -142,34 +218,40 @@ const HomePage = () => {
         variants={pageVariants}
         transition={pageTransition}
       >
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="max-w-screen-2xl mx-auto">
           {/* Hero Section */}
           <HeroSection></HeroSection>
           {/* Stats Section */}
           <div
             data-aos="fade-up"
-            class="stats stats-vertical lg:stats-horizontal md:stats-horizontal shadow w-full bg-white rounded-lg overflow-hidden"
+            class="stats stats-vertical lg:w-full lg:stats-horizontal md:stats-horizontal shadow w-11/12 mx-5 my-8 bg-background  rounded-lg overflow-hidden"
           >
             <div class="stat">
-              <div class="stat-title">Tuitor Count</div>
-              <div class="stat-value">31K</div>
+              <div class="stat-title text-text font-title font-bold">
+                Tuitor Count
+              </div>
+              <div class="stat-value text-accent">31K</div>
               <div class="stat-desc">Exprience Tuitor</div>
             </div>
 
             <div class="stat">
-              <div class="stat-title">Rating</div>
-              <div class="stat-value">47,200</div>
+              <div class="stat-title text-text font-title font-bold">
+                Rating
+              </div>
+              <div class="stat-value text-accent">47,200</div>
               <div class="stat-desc">5 star tuitor</div>
             </div>
 
             <div class="stat">
-              <div class="stat-title">Subjects</div>
-              <div class="stat-value">120+</div>
+              <div class="stat-title text-text font-title font-bold">
+                Subjects
+              </div>
+              <div class="stat-value text-accent">120+</div>
               <div class="stat-desc">Subject taughts</div>
             </div>
             <div class="stat">
-              <div class="stat-title">Users</div>
-              <div class="stat-value">1,200</div>
+              <div class="stat-title text-text font-title font-bold">Users</div>
+              <div class="stat-value text-accent">1,200</div>
               <div class="stat-desc">New users 500+</div>
             </div>
           </div>
@@ -213,9 +295,64 @@ const HomePage = () => {
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Other Sections */}
-          <LearningBenefitsSection></LearningBenefitsSection>
-          <HowItWorksSection></HowItWorksSection>
           <OfferCourses></OfferCourses>
+          {/* Community Highlights */}
+          <section data-aos="fade-up" className="py-12 px-4">
+            <CustomBanner
+              title={"Community Highlights"}
+              description={
+                "Our global community makes learning exciting and connected."
+              }
+            />
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+              {communityHighlights.map((item, index) => (
+                <li
+                  key={index}
+                  className="bg-background p-4 rounded-lg shadow-md text-center"
+                >
+                  <p className="text-lg font-medium text-gray-700">{item}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Upcoming Courses */}
+          <section data-aos="fade-down" className="py-12 px-4">
+            <CustomBanner
+              title={"Upcoming Courses"}
+              description={"Don’t miss out on our latest offerings."}
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+              {upcomingCourses.map((course, index) => (
+                <div
+                  key={index}
+                  className="bg-background p-6 rounded-lg shadow-md hover:shadow-xl transition text-center"
+                >
+                  <h3 className="text-xl font-semibold text-text">{course}</h3>
+                </div>
+              ))}
+            </div>
+          </section>
+          {/* Success Stories */}
+          <section data-aos="fade-up" className="py-12 px-4">
+            <CustomBanner
+              title="Success Stories"
+              description="See how learners have transformed their lives through language."
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+              {successStories.map((story) => (
+                <div
+                  key={story.id}
+                  className="bg-background p-6 rounded-lg shadow-md"
+                >
+                  <h3 className="text-xl font-bold text-text mb-2">
+                    {story.name}
+                  </h3>
+                  <p className="text-gray-700">"{story.story}"</p>
+                </div>
+              ))}
+            </div>
+          </section>
           {/* Testimonials Section */}
           <section className="py-12">
             <h2 className="text-4xl font-bold text-center mb-8">
@@ -225,7 +362,7 @@ const HomePage = () => {
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="bg-white p-6 rounded-lg shadow-md"
+                  className="bg-background p-6 rounded-lg shadow-md"
                 >
                   <div className="flex items-center mb-4">
                     <img
@@ -256,17 +393,17 @@ const HomePage = () => {
                 "Explore our top-rated tutors who are ready to help you achieve your learning goals."
               }
             ></CustomBanner>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-6">
               {popularTutors.map((tutor) => (
                 <div
                   key={tutor.id}
-                  className="bg-white flex flex-col h-[450px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                  className="bg-background flex flex-col h-[450px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="overflow-hidden">
                     <img
                       src={tutor.image}
                       alt={tutor.name}
-                      className="w-full h-48 object-cover rounded-tr-lg rounded-br-lg transition-transform duration-300 hover:scale-105"
+                      className="w-full h-48 object-fill rounded-tr-lg rounded-br-lg transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                   <div className="p-4 flex flex-col justify-between flex-1">
@@ -278,7 +415,7 @@ const HomePage = () => {
                       </p>
                       <p className="text-gray-600">Price: {tutor.price}</p>
                     </div>
-                    <button className="mt-4  text-[#05154e] px-4 py-2 rounded-lg bg-[#e3c0f6]">
+                    <button className="mt-4  text-text px-4 py-2 rounded-lg bg-accent font-body font-medium">
                       View Profile
                     </button>
                   </div>

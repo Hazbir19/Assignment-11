@@ -54,9 +54,6 @@ const AddTuitorial = () => {
   return (
     <>
       <div>
-        <h1 className="text-center lg:text-5xl md:text-2xl sm:text-lg  p-5 mt-5">
-          Add Tuitorial
-        </h1>
         <form className="mx-5" onSubmit={HandleFormSubmit}>
           <div className="max-w-screen-sm mx-auto shadow-sm rounded-lg py-8 px-8 mt-8">
             <div className="lg:flex md:flex justify-evenly gap-5 w-full">
@@ -122,7 +119,7 @@ const AddTuitorial = () => {
             </div>
             <div className="flex justify-center mt-[2rem] gap-12">
               <button
-                className="bg-purple-600/50 px-5 py-2 rounded-xl text-lg  font-bold hover:bg-purple-500/50"
+                className="bg-accent text-text px-5 py-2 rounded-xl text-lg  font-semibold font-body"
                 type="submit"
               >
                 Submit
