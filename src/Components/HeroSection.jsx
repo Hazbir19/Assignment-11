@@ -3,10 +3,10 @@ import ButtonSecondary from "./ButtonSecondary";
 import CustomInput from "./CustomInput";
 const HeroSection = () => {
   return (
-    <section className=" text-center">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        <div className="md:w-1/2 mb-8 md:mb-0">
-          <h1 className="text-xl lg:text-4xl md:text-2xl  font-bold text-text mb-4">
+    <section className="">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div className="md:w-1/2 mb-12">
+          <h1 className="text-xl lg:text-4xl md:text-2xl font-bold text-text mb-4">
             Find Your Perfect Language Tutor
           </h1>
           <p className="mb-6 text-lg">

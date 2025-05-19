@@ -39,7 +39,7 @@ const Navbar = () => {
             <img
               src="https://i.ibb.co/xSwWbmsq/Logo-removebg-preview.png"
               alt="Logo"
-              className="w-12 h-12 rounded-full"
+              className="w-16 h-16 rounded-full"
             />
           </Link>
         </div>
